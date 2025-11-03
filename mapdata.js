@@ -302,35 +302,3 @@ var simplemaps_countrymap_mapdata={
     data: {}
   }
 };
-
-simplemaps_countrymap.ready = function() {
-  
-  var labels = document.querySelectorAll(".sm_map_label");
-  labels.forEach(function(label){
-    label.style.display = "inline-block";
-    label.style.padding = "4px 10px";
-    label.style.backgroundColor = "#156949";
-    label.style.color = "white";
-    label.style.borderRadius = "6px";
-    label.style.fontFamily = "'Inter', sans-serif";
-    label.style.fontSize = "14px";
-    label.style.cursor = "pointer";
-    label.style.userSelect = "none";
-    label.style.transition = "background-color 0.2s";
-
-    label.addEventListener("mouseenter", function() {
-      var locId = label.getAttribute("id"); // sm_label_0, sm_label_1, etc.
-      simplemaps_countrymap.map.showPopup(locId);
-    });
-
-    label.addEventListener("mouseleave", function() {
-      simplemaps_countrymap.map.hidePopup();
-    });
-  });
-
-  // Optional: disable hover on original location dots
-  document.querySelectorAll(".sm_map_location").forEach(function(dot){
-    dot.style.pointerEvents = "none";
-  });
-
-};
